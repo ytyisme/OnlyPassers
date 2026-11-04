@@ -20,7 +20,7 @@ struct CaptureView: View {
                     header
                     buttons
                     Spacer(minLength: 12)
-                    Text("当前是占位处理，还不会真正卡通化。")
+                    Text("检测和卡通化都在本机完成，照片不会上传。")
                         .font(.footnote)
                         .foregroundStyle(.tertiary)
                         .multilineTextAlignment(.center)
@@ -139,7 +139,10 @@ private struct PickedPhoto: Transferable {
 #if DEBUG
 #Preview {
     NavigationStack {
-        CaptureView(model: AppModel())
+        CaptureView(model: AppModel(
+            processing: StubProcessingService(),
+            detecting: StubRegionDetector()
+        ))
     }
 }
 #endif

@@ -2,9 +2,9 @@ import Foundation
 
 /// 把一张照片加工成「路人卡通、主体与风景仍清晰」的结果。
 ///
-/// 现在只有 `StubProcessingService`。以后把 Vision 分割和风格迁移 / 生成式卡通
-/// 接在具体实现里，调用方（`AppModel`）不用改。
-/// 约束：只卡通化非主体的人；主体和背景像素保持原图。
+/// 生产实现是 `OnDeviceProcessingService`（Vision 蒙版 + Core Image）。
+/// `StubProcessingService` 留给 SwiftUI 预览。调用方只依赖这个协议。
+/// 约束：只卡通化非主体的人；主体和背景像素保持原图。不要上传照片。
 protocol ProcessingService: Sendable {
     func process(_ request: ProcessRequest) async throws -> ProcessResult
 }
