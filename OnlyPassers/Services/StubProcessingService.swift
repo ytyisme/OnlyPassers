@@ -1,12 +1,7 @@
 import UIKit
 
-/// 占位流水线：解码原图，画上主体 / 路人示意框和一条「尚未卡通化」的底栏，再编码回去。
-///
-/// 替换这里时建议的顺序：
-/// 1. `RegionDetecting` 做人物分割和人脸检测。
-/// 2. 用户确认 `isMainSubject`（主视角 / 自己）。
-/// 3. 只对非主体人物的蒙版做风格迁移或生成式卡通。
-/// 4. 把卡通路人合成回清晰的风景和主体上。
+/// 预览用占位流水线：不读照片内容，只在图上画出主体 / 路人示意框。
+/// 真机路径是 `OnDeviceProcessingService`，不要在正式界面里用这个类型。
 struct StubProcessingService: ProcessingService {
     var regionDetector: any RegionDetecting = StubRegionDetector()
 

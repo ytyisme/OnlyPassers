@@ -2,7 +2,7 @@ import CoreGraphics
 import Foundation
 
 /// 固定的三块示意区域：中间是主体，左右是路人。
-/// 不读图像内容，也不能当成检测结果。
+/// 不读图像内容。SwiftUI 预览用它，正式路径用 `VisionRegionDetector`。
 struct StubRegionDetector: RegionDetecting {
     func detectRegions(in _: Data) async throws -> [FaceOrPersonRegion] {
         Self.placeholders
